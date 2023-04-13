@@ -4,9 +4,10 @@ con = sqlite3.connect('KJF.sqlite')
 cur = con.cursor()
 #cur.execute("SELECT * FROM sqlite_master WHERE type='table' ORDER BY name")
 #"SELECT name FROM testament WHERE name='Antigo Testamento'"
-for row in cur.execute("SELECT name FROM testament"):
+busca = str(input('Digite o Livro'))
+for row in cur.execute(f"SELECT text FROM verse WHERE book_id={busca}"):
     text = row[0]
-    print(text)
+    print(row)
 con.close()
 """
 ('table', 'book', 'book', 2, 'CREATE TABLE "book" (\n\t"id"\tINTEGER,\n\t"book_reference_id"\tINTEGER,\n\t"testament_reference_id"\tINTEGER,\n\t"name"\tTEXT\n)')
